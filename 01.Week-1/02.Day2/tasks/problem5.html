@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learning platforms</title>
+</head>
+<body>
+    <header></header>
+    <h2>Online Learning Platform</h2>
+    <h3>Course Enrollment</h3>
+    </header>
+    <br>
+    <main>
+        <form action="submit.pip" method="post" autofocus autocomplete="on">
+            
+        <label>Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required/>
+        <br><br>
 
+        <label>Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required/>
+        <br><br>
+
+       <label for="course">Choose Course:</label><br>
+        <input list="courses" id="course" name="course" placeholder="Select or type a course" required>
+        <datalist id="courses">
+            <option value="HTML "></option>
+            <option value="CSS ">CSS </option>
+            <option value="JavaScript ">JavaScript </option>
+            <option value="Python Programming">Python Programming</option>
+        </datalist>
+        <br><br>
+
+        <label for="skill">Skill Level:</label><br>
+        <meter id="skill" name="skill" value="0.5" min="0" max="1"></meter>
+        <br>
+        <small>0 = Beginner, 0.5 = Intermediate, 1 = Advanced</small>
+        <br><br>
+
+        <label for="progress">Enrollment Progress:</label><br>
+        <progress id="progress" value="70" min="0" max="100"></progress>
+        <br>
+        <small>Progress shown as %</small>
+        <br><br>
+
+        <label for="num_courses">Number of Courses:</label><br>
+        <input type="number" id="num_courses" name="num_courses" min="1" max="10" required>
+        <br><br>
+
+        <label for="hours">Learning Hours per Week:</label><br>
+        <input type="range" id="hours" name="hours" min="1" max="40">
+        
+        <br><br>
+
+
+        <input type="submit" value="Enroll Now">
+        <input type="reset" value="Clear"/>
+
+
+        </form>
+    </main>
+
+</body>
+</html>
