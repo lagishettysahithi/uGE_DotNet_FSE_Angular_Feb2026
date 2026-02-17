@@ -1,1 +1,37 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Introduction</title>
+</head>
+<body>
+    <h3>Sahihti Lagishetty</h3>
+    <p>My name is sahithi recently completed my Btech in cmrit</p>
+    <h4>Hobbies</h4>
+    <ul>
+        <li>sports</li>
+        <li>swimming</li> 
+        <li>movies</li>  
+    </ul>
+    <h3>Daily-Life</h3>
+    <ol>
+        <li>wake up in morning</li>
+        <li> having breakfast</li>  
+         <li>practice coding</li>    
+    </ol>
+    <table border="1">
+        <tr>
+          <th>StudentName</th>  
+           <th>Subjects</th> 
+            <th>Marks</th>
+        </tr>
+        <tr>
+           <td>Sahithi</td>
+           <td>maths</td>
+           <td>99</td>
+        </tr>
+    </table>
+    
+</body>
+</html>
