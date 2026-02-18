@@ -1,1 +1,102 @@
+Html-code
+_________________
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Blog</title>
+  <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+
+  <header>
+    <h1>My Blog</h1>
+  </header>
+
+  <main class="blog-container">
+
+    <article class="card">
+      <h2>Year 2026</h2>
+      <p>Present year.</p>
+      <button>Read More</button>
+    </article>
+
+    <article class="card">
+      <h2>Year 2025</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam ut delectus, harum atque laboriosam est excepturi maiores enim, officiis architecto illo sed consectetur quod eum iusto iste eos suscipit quisquam.</p>
+      <button>Read More</button>
+    </article>
+
+    <article class="card">
+      <h2>Year 2024</h2>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, esse modi animi ullam recusandae voluptate, mollitia, nemo nobis nam illo atque. Iure vero dolor excepturi? Accusantium voluptatem debitis temporibus deserunt!</p>
+      <button>Read More</button>
+    </article>
+
+    <article class="card">
+      <h2>Year 2023</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum odio nam eaque voluptatum sed praesentium esse molestiae rerum ex harum, commodi molestias veniam, corporis, dicta ullam quibusdam! Nam, sequi quo.</p>
+      <button>Read More</button>
+    </article>
+
+  </main>
+
+</body>
+</html>
+
+CSS-code
+_____________
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+}
+
+header {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.blog-container {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  flex: 1 1 250px;
+  background-color: rgb(117, 192, 219);
+  border: 2px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.card p {
+  color: #555;
+  line-height: 1.5;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  border: none;
+  background-color: #bbb827;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056cc;
+}
 
