@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Layout</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color:bisque;
+            color: rgb(228, 16, 24);
+            width: 220px;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 15px 0;
+        }
+
+        .main {
+            flex: 1;
+            padding: 20px;
+            background-color: #f4f6f9;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1 1 250px;
+            background-color: white;
+            border: 2px solid #f99999;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <div class="sidebar">
+            <h2>Admin</h2>
+            <ul>
+                <li>Home</li>
+                <li>Analytics</li>
+                <li>Reports</li>
+                <li>Settings</li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <h1>Dashboard</h1>
+
+            <div class="cards">
+                <div class="card">Users: 100</div>
+                <div class="card">Revenue:8400</div>
+                <div class="card">Orders: 320</div>
+                <div class="card">Growth: 15%</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
 
