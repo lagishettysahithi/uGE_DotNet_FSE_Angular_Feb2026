@@ -1,1 +1,41 @@
+html
+___________________
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Responsive Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <h1>Welcome to The Website</h1>
+    <p>Page changes layout on mobile screen.</p>
+</body>
+</html>
 
+CSS
+_________________
+body {
+    background-color: rgb(192, 203, 42);
+    font-size: 20px;
+    font-family: Arial;
+}
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-color: lightgrey;
+        font-size: 16px;
+    }
+    nav {
+        flex-direction: column;
+    }
+}
