@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile Manager</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
 
+        #profileCard {
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Profile</h2>
+
+    <div id="profileCard"></div>
+
+    <button id="loadBtn">Load Profile</button>
+    <button id="updateMarksBtn">Update Marks</button>
+
+    <script>
+
+        let student = {
+            name: "Sahithi",
+            rollNo: "21R01A0596",
+            marks: 75
+        };
+
+        function updateStudentProfile(studentObj) {
+
+            const card = document.getElementById("profileCard");
+
+            card.innerHTML = `
+                <h3>${studentObj.name}</h3>
+                <p><strong>Roll No:</strong> ${studentObj.rollNo}</p>
+                <p><strong>Marks:</strong> ${studentObj.marks}</p>
+            `;
+        }
+
+        function updateMarks(newMarks) {
+
+            student.marks = newMarks;  
+            updateStudentProfile(student); 
+        }
+
+        document.getElementById("loadBtn")
+                .addEventListener("click", function() {
+                    updateStudentProfile(student);
+                });
+
+        document.getElementById("updateMarksBtn")
+                .addEventListener("click", function() {
+                    updateMarks(90);   
+                });
+
+    </script>
+
+</body>
+</html>
