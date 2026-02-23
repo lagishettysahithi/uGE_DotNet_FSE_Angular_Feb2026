@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem-3:Location Based Weather Logger</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: whitesmoke;
+        }
+
+        .box {
+            background: lightsteelblue;
+            padding: 20px;
+            margin: 20px auto;
+            width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .history {
+            text-align: left;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body onload="loadHistory()">
+
+    <div class="box">
+        <h2> Location Weather Logger</h2>
+
+        <button onclick="getLocation()">Get My Location</button>
+
+        <p id="output"></p>
+
+        <div class="history">
+            <h3>Last 5 Locations:</h3>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+<script>
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(showPosition, showError, {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        });
+
+    } else {
+        document.getElementById("output").innerHTML =
+            "<span class='error'>Geolocation is not supported by this browser.</span>";
+    }
+}
+
+function showPosition(position) {
+
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+
+    document.getElementById("output").innerHTML =
+        "<span class='success'>Latitude: " + latitude +
+        "<br>Longitude: " + longitude + "</span>";
+
+    saveLocation(latitude, longitude);
+}
+
+function showError(error) {
+
+    let message = "";
+
+    switch (error.code) {
+
+        case error.PERMISSION_DENIED:
+            message = "User denied the request for Geolocation.";
+            break;
+
+        case error.POSITION_UNAVAILABLE:
+            message = "Location information is unavailable.";
+            break;
+
+        case error.TIMEOUT:
+            message = "The request to get user location timed out.";
+            break;
+
+        case error.UNKNOWN_ERROR:
+            message = "An unknown error occurred.";
+            break;
+    }
+
+    document.getElementById("output").innerHTML =
+        "<span class='error'>" + message + "</span>";
+}
+
+function saveLocation(lat, lon) {
+
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+
+    let newEntry = {
+        latitude: lat,
+        longitude: lon,
+        time: new Date().toLocaleString()
+    };
+
+    locations.unshift(newEntry);
+
+    if (locations.length > 5) {
+        locations.pop();
+    }
+
+    localStorage.setItem("locations", JSON.stringify(locations));
+
+    loadHistory();
+}
+
+function loadHistory() {
+
+    let locations = JSON.parse(localStorage.getItem("locations")) || [];
+
+    let historyDiv = document.getElementById("historyList");
+
+    historyDiv.innerHTML = "";
+
+    locations.forEach(function(location, index) {
+
+        let div = document.createElement("div");
+
+        div.innerHTML =
+            (index + 1) + ". " +
+            "Lat: " + location.latitude +
+            ", Lon: " + location.longitude +
+            "<br><small>" + location.time + "</small><hr>";
+
+        historyDiv.appendChild(div);
+    });
+}
+
+</script>
+
+</body>
+</html>
