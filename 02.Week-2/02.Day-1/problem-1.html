@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>problem-1:Notes</title>
+</head>
+<body>
 
+    <h2> Personal Daily Notes</h2>
+
+    <textarea id="noteArea" rows="8" cols="40" placeholder="Start writing your note here..."></textarea>
+    <br><br>
+
+    <button onclick="saveNote()">Save</button>
+    <button onclick="clearNote()">Clear</button>
+
+    <script>
+
+        window.onload = function() {
+            let savedNote = localStorage.getItem("dailyNote");
+
+            if (savedNote !== null) {
+                document.getElementById("noteArea").value = savedNote;
+            }
+        };
+
+
+        function saveNote() {
+
+            let noteText = document.getElementById("noteArea").value;
+            localStorage.setItem("dailyNote", noteText);
+            alert("Note Saved Successfully!");
+        }
+
+
+        function clearNote() {
+
+            localStorage.removeItem("dailyNote");
+            document.getElementById("noteArea").value = "";
+            alert("Note Cleared!");
+        }
+
+    </script>
+
+</body>
+</html>
