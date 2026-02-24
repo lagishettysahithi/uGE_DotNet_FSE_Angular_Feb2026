@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem-1</title>
+</head>
+<body>
 
+    <h2>Analyze Student Marks</h2>
+    <button onclick="analyzeMarks()">Analyze Marks</button>
+
+    <div id="output"></div>
+
+    <script>
+
+        let marks = [70, 80, 60, 85, 50];
+
+        let calculateTotal = (marksArray) =>
+            marksArray.reduce((total, mark) => total + mark, 0);
+
+        let calculateAverage = (marksArray) => {
+            let total = calculateTotal(marksArray);
+            return total / marksArray.length;
+        };
+
+        let checkResult = (average) =>
+            average >= 50 ? "Pass" : "Fail";
+
+        let analyzeMarks = () => {
+
+            let total = calculateTotal(marks);
+            let average = calculateAverage(marks);
+            let result = checkResult(average);
+
+            let displayMarks = marks.map(mark => mark);
+
+            document.getElementById("output").innerHTML = `
+                <p><strong>Marks:</strong> ${displayMarks.join(", ")}</p>
+                <p><strong>Total:</strong> ${total}</p>
+                <p><strong>Average:</strong> ${average.toFixed(2)}</p>
+                <p><strong>Result:</strong> ${result}</p>
+            `;
+        };
+
+    </script>
+
+</body>
+</html>
