@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem-2</title>
+</head>
+<body>
+
+    <h2>Shopping Cart Invoice</h2>
+    <button onclick="generateInvoice()">Generate Invoice</button>
+
+    <pre id="output"></pre>
+
+    <script>
+
+        const products = [
+            { name: "Bag", price: 500, quantity: 1 },
+            { name: "Tables", price: 600, quantity: 2 },
+            { name: "Mobile", price: 15000, quantity: 1 }
+        ];
+
+        const calculateCartSummary = (productList) => {
+
+            const updatedProducts = productList.map(product => ({
+                name: product.name,
+                price: product.price,
+                quantity: product.quantity,
+                subtotal: product.price * product.quantity
+            }));
+
+            const totalValue = updatedProducts.reduce(
+                (total, product) => total + product.subtotal,
+                0
+            );
+
+            return { updatedProducts, totalValue };
+        };
+
+        const generateInvoice = () => {
+
+            const result = calculateCartSummary(products);
+
+            const updatedProducts = result.updatedProducts;
+            const totalValue = result.totalValue;
+
+            const invoice = `
+----------- INVOICE -----------
+
+${updatedProducts.map(product => 
+`Product: ${product.name}
+Price: ₹${product.price}
+Quantity: ${product.quantity}
+Subtotal: ₹${product.subtotal}`
+).join("\n\n")}
+
+--------------------------------
+Total Cart Value: ₹${totalValue}
+`;
+
+            document.getElementById("output").textContent = invoice;
+        };
+
+        window.generateInvoice = generateInvoice;
+
+    </script>
+
+</body>
+</html>
