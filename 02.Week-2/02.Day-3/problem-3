@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>problem-3</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #inp {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin: 10px auto;
+            width: 300px;
+            padding: 10px;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .del {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>To-Do List</h2>
+
+<input type="text" id="inp" placeholder="Enter task">
+<button id="add">Add</button>
+
+<ul id="list"></ul>
+
+<script>
+
+
+const input = document.getElementById("inp");
+const btn = document.getElementById("add");
+const box = document.getElementById("list");
+
+function makeItem(text) {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        <span class="txt">${text}</span>
+        <button class="del">X</button>
+    `;
+
+    return li;
+}
+
+function addItem() {
+    const val = input.value.trim();
+
+    if (val === "") return;
+
+    const item = makeItem(val);
+    box.appendChild(item);
+
+    input.value = "";
+}
+
+function action(e) {
+    const t = e.target;
+
+    if (t.classList.contains("del")) {
+        t.parentElement.remove();
+    }
+
+    if (t.classList.contains("txt")) {
+        t.classList.toggle("done");
+    }
+}
+
+btn.addEventListener("click", addItem);
+box.addEventListener("click", action);
+
+</script>
+
+</body>
+</html>
