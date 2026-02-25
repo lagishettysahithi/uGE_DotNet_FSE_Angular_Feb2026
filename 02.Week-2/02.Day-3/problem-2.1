@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager Async Demo</title>
+</head>
+<body>
 
+    <h2>Task Manager (Callback → Promise → Async/Await)</h2>
+    <button onclick="runCallback()">Run Callback Version</button>
+    <button onclick="runPromise()">Run Promise Version</button>
+    <button onclick="runAsyncAwait()">Run Async/Await Version</button>
+
+    <pre id="output"></pre>
+
+<script>
+/* ==============================
+   COMMON STORAGE (Array)
+============================== */
+
+let tasks = [];
+
+/* Utility to print output */
+const print = (message) => {
+    document.getElementById("output").textContent += message + "\n";
+};
+
+/* Reset output */
+const reset = () => {
+    tasks = [];
+    document.getElementById("output").textContent = "";
+};
+
+/* =====================================================
+   1️⃣ CALLBACK VERSION
+===================================================== */
+
+const saveTaskCallback = (task, callback) => {
+    setTimeout(() => {
+        tasks.push(task);
+        callback(`✔ Task "${task.title}" saved`);
+    }, 1000);
+};
+
+const deleteTaskCallback = (id, callback) => {
+    setTimeout(() => {
+        tasks = tasks.filter(t => t.id !== id);
+        callback(`❌ Task ${id} deleted`);
+    }, 1000);
+};
+
+const listTasksCallback = (callback) => {
+    setTimeout(() => {
+        callback(tasks);
+    }, 1000);
+};
+
+function runCallback() {
+    reset();
+    print("Running Callback Version...\n");
+
+    saveTaskCallback({id:1,title:"Learn JS"}, (msg1) => {
+        print(msg1);
+
+        saveTaskCallback({id:2,title:"Practice Async"}, (msg2) => {
+            print(msg2);
+
+            listTasksCallback((data) => {
+                print("\n📋 Task List:");
+                data.forEach(t =>
+                    print(`ID: ${t.id} | Title: ${t.title}`)
+                );
+
+                deleteTaskCallback(1, (msg3) => {
+                    print("\n" + msg3);
+
+                    listTasksCallback((data2) => {
+                        print("\n📋 Final Task List:");
+                        data2.forEach(t =>
+                            print(`ID: ${t.id} | Title: ${t.title}`)
+                        );
+                    });
+                });
+            });
+        });
+    });
+}
+
+/* =====================================================
+   2️⃣ PROMISE VERSION
+===================================================== */
+
+const saveTaskPromise = (task) => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            tasks.push(task);
+            resolve(`✔ Task "${task.title}" saved`);
+        }, 1000);
+    });
+};
+
+const deleteTaskPromise = (id) => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            tasks = tasks.filter(t => t.id !== id);
+            resolve(`❌ Task ${id} deleted`);
+        }, 1000);
+    });
+};
+
+const listTasksPromise = () => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(tasks);
+        }, 1000);
+    });
+};
+
+function runPromise() {
+    reset();
+    print("Running Promise Version...\n");
+
+    saveTaskPromise({id:1,title:"Learn JS"})
+        .then(msg => {
+            print(msg);
+            return saveTaskPromise({id:2,title:"Practice Async"});
+        })
+        .then(msg => {
+            print(msg);
+            return listTasksPromise();
+        })
+        .then(data => {
+            print("\n📋 Task List:");
+            data.forEach(t =>
+                print(`ID: ${t.id} | Title: ${t.title}`)
+            );
+            return deleteTaskPromise(1);
+        })
+        .then(msg => {
+            print("\n" + msg);
+            return listTasksPromise();
+        })
+        .then(data => {
+            print("\n📋 Final Task List:");
+            data.forEach(t =>
+                print(`ID: ${t.id} | Title: ${t.title}`)
+            );
+        });
+}
+
+/* =====================================================
+   3️⃣ ASYNC / AWAIT VERSION (MODERN)
+===================================================== */
+
+async function runAsyncAwait() {
+    reset();
+    print("Running Async/Await Version...\n");
+
+    const msg1 = await saveTaskPromise({id:1,title:"Learn JS"});
+    print(msg1);
+
+    const msg2 = await saveTaskPromise({id:2,title:"Practice Async"});
+    print(msg2);
+
+    const data = await listTasksPromise();
+    print("\n📋 Task List:");
+    data.forEach(t =>
+        print(`ID: ${t.id} | Title: ${t.title}`)
+    );
+
+    const msg3 = await deleteTaskPromise(1);
+    print("\n" + msg3);
+
+    const finalData = await listTasksPromise();
+    print("\n📋 Final Task List:");
+    finalData.forEach(t =>
+        print(`ID: ${t.id} | Title: ${t.title}`)
+    );
+}
+
+</script>
+</body>
+</html>
