@@ -44,7 +44,7 @@ const saveTaskCallback = (task, callback) => {
 const deleteTaskCallback = (id, callback) => {
     setTimeout(() => {
         tasks = tasks.filter(t => t.id !== id);
-        callback(`❌ Task ${id} deleted`);
+        callback(` Task ${id} deleted`);
     }, 1000);
 };
 
@@ -65,7 +65,7 @@ function runCallback() {
             print(msg2);
 
             listTasksCallback((data) => {
-                print("\n📋 Task List:");
+                print("\n Task List:");
                 data.forEach(t =>
                     print(`ID: ${t.id} | Title: ${t.title}`)
                 );
@@ -74,7 +74,7 @@ function runCallback() {
                     print("\n" + msg3);
 
                     listTasksCallback((data2) => {
-                        print("\n📋 Final Task List:");
+                        print("\n Final Task List:");
                         data2.forEach(t =>
                             print(`ID: ${t.id} | Title: ${t.title}`)
                         );
@@ -93,7 +93,7 @@ const saveTaskPromise = (task) => {
     return new Promise(resolve => {
         setTimeout(() => {
             tasks.push(task);
-            resolve(`✔ Task "${task.title}" saved`);
+            resolve(` Task "${task.title}" saved`);
         }, 1000);
     });
 };
@@ -102,7 +102,7 @@ const deleteTaskPromise = (id) => {
     return new Promise(resolve => {
         setTimeout(() => {
             tasks = tasks.filter(t => t.id !== id);
-            resolve(`❌ Task ${id} deleted`);
+            resolve(` Task ${id} deleted`);
         }, 1000);
     });
 };
@@ -129,7 +129,7 @@ function runPromise() {
             return listTasksPromise();
         })
         .then(data => {
-            print("\n📋 Task List:");
+            print("\n Task List:");
             data.forEach(t =>
                 print(`ID: ${t.id} | Title: ${t.title}`)
             );
@@ -140,7 +140,7 @@ function runPromise() {
             return listTasksPromise();
         })
         .then(data => {
-            print("\n📋 Final Task List:");
+            print("\n Final Task List:");
             data.forEach(t =>
                 print(`ID: ${t.id} | Title: ${t.title}`)
             );
@@ -162,7 +162,7 @@ async function runAsyncAwait() {
     print(msg2);
 
     const data = await listTasksPromise();
-    print("\n📋 Task List:");
+    print("\n Task List:");
     data.forEach(t =>
         print(`ID: ${t.id} | Title: ${t.title}`)
     );
@@ -171,7 +171,7 @@ async function runAsyncAwait() {
     print("\n" + msg3);
 
     const finalData = await listTasksPromise();
-    print("\n📋 Final Task List:");
+    print("\n Final Task List:");
     finalData.forEach(t =>
         print(`ID: ${t.id} | Title: ${t.title}`)
     );
