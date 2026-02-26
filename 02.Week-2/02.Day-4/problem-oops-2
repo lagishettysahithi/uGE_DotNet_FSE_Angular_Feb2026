@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inheritance</title>
+</head>
+<body>
+
+<h2>Vehicle Management System</h2>
+
+<div id="output"></div>
+
+<script>
+    class Vehicle {
+        constructor(brand, speed) {
+            this.brand = brand;
+            this.speed = speed;
+        }
+
+        // Parent Method
+        displayInfo() {
+            return `
+                Brand: ${this.brand} <br>
+                Speed: ${this.speed} km/h <br>
+            `;
+        }
+    }
+
+    // Derived Class (Inheritance)
+    class Car extends Vehicle {
+        constructor(brand, speed, fuelType) {
+            super(brand, speed);  // Calling parent constructor
+            this.fuelType = fuelType;
+        }
+
+        // Child Method
+        showCarDetails() {
+            return `
+                Fuel Type: ${this.fuelType} <br>
+            `;
+        }
+    }
+
+    // Create Car Object
+    const car1 = new Car("Toyota", 180, "Petrol");
+
+    // Display Output
+    const output = document.getElementById("output");
+
+    // Calling Parent Method
+    output.innerHTML += "<h3>Vehicle Info (Parent Method)</h3>";
+    output.innerHTML += car1.displayInfo();
+
+    // Calling Child Method
+    output.innerHTML += "<h3>Car Details (Child Method)</h3>";
+    output.innerHTML += car1.showCarDetails();
+</script>
+
+</body>
+</html>
