@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Class Program</title>
+</head>
+<body>
+
+<h2>Student Details</h2>
+
+<div id="output"></div>
+
+<script>
+    class Student {
+
+        constructor(name, rollNumber, marks) {
+            this.name = name;
+            this.rollNumber = rollNumber;
+            this.marks = marks;
+        }
+
+        // Return student details
+        getDetails() {
+            return `
+                Name: ${this.name} <br>
+                Roll Number: ${this.rollNumber} <br>
+                Marks: ${this.marks} <br>
+            `;
+        }
+
+        getGrade() {
+            if (this.marks >= 90) {
+                return "A";
+            } else if (this.marks >= 75) {
+                return "B";
+            } else if (this.marks >= 50) {
+                return "C";
+            } else {
+                return "Fail";
+            }
+        }
+    }
+
+    // Create student objects
+    const student1 = new Student("Rahul", 101, 92);
+    const student2 = new Student("Anjali", 102, 68);
+
+    const output = document.getElementById("output");
+
+    output.innerHTML += student1.getDetails();
+    output.innerHTML += "Grade: " + student1.getGrade();
+    output.innerHTML += "<hr>";
+
+    output.innerHTML += student2.getDetails();
+    output.innerHTML += "Grade: " + student2.getGrade();
+</script>
+
+</body>
+</html>
