@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment System - Polymorphism</title>
+</head>
+<body>
+
+<h2>Payment System</h2>
+
+<div id="output"></div>
+
+<script>
+    // Base Class
+    class Payment {
+        pay(amount) {
+            return "Processing payment of ₹" + amount + "<br>";
+        }
+    }
+
+    // Credit Card Payment
+    class CreditCardPayment extends Payment {
+        pay(amount) {
+            return "Paid ₹" + amount + " using Credit Card<br>";
+        }
+    }
+
+    // UPI Payment
+    class UPIPayment extends Payment {
+        pay(amount) {
+            return "Paid ₹" + amount + " using UPI<br>";
+        }
+    }
+
+    // Cash Payment
+    class CashPayment extends Payment {
+        pay(amount) {
+            return "Paid ₹" + amount + " using Cash<br>";
+        }
+    }
+
+    // Create Objects
+    const credit = new CreditCardPayment();
+    const upi = new UPIPayment();
+    const cash = new CashPayment();
+
+    const output = document.getElementById("output");
+
+    // Calling pay() method (Polymorphism)
+    output.innerHTML += credit.pay(500);
+    output.innerHTML += upi.pay(500);
+    output.innerHTML += cash.pay(500);
+</script>
+
+</body>
+</html>
