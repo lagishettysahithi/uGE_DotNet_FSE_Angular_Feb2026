@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>problem-1</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f2f2;
+        }
+        .container {
+            width: 400px;
+            margin: 70px auto;
+            padding: 20px;
+            background: white;
+            
+           
+        }
+        input, select, textarea {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Feedback Form</h2>
+
+    <form id="feedbackForm">
+        <input type="text" id="name" placeholder="Enter your Name">
+        <input type="email" id="email" placeholder="Enter your Email">
+
+        <select id="rating">
+            <option value="">Select Course Rating</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+        </select>
+
+        <textarea id="comments" placeholder="Enter your Comments"></textarea>
+
+        <button type="button" id="submitBtn">Submit</button>
+    </form>
+
+    <div id="result" class="message"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#submitBtn").click(function () {
+
+            // Get input values using jQuery selectors
+            var name = $("#name").val().trim();
+            var email = $("#email").val().trim();
+
+            // Validation
+            if (name === "" || email === "") {
+                 // If empty, show error message
+                $("#result")
+                    .removeClass("success")
+                    .addClass("error")
+                    .text("Please fill in both Name and Email fields.");
+            }
+            else {
+                $("#result")
+                    .removeClass("error") // Remove error styling if it exists
+                    .addClass("success")   // Add success styling (green color)
+                    .text("Thank you! Your feedback has been submitted successfully.");
+
+                // Clear form fields
+                $("#feedbackForm").trigger("reset");
+            }
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
