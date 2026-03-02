@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Problem-2</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    /* display-none invisible until user clicks.*/
+
+        .answer {
+            display: none; 
+            margin-top: 8px;
+        }
+
+        .active {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <div class="question">1. What courses do you offer?</div>
+        <div class="answer">We offer Web Development, Data Science, and AI courses.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">2. Is there any certification?</div>
+        <div class="answer">Yes, certification will be provided after course completion.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">3. What is the course duration?</div>
+        <div class="answer"> courses are 3 to 6 months long.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">4. Do you provide placement support?</div>
+        <div class="answer">Yes, we provide placement assistance and interview preparation.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">5. Are online classes available?</div>
+        <div class="answer">Yes, both online and offline classes are available.</div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $(".question").click(function () {
+
+            // Remove the CSS class active highlight from all questions
+
+            $(".question").removeClass("active");
+
+            // Add highlight to clicked question
+
+            $(this).addClass("active");
+
+            // Hide other answers excludes the answer right after the clicked question
+
+            $(".answer").not($(this).next()).slideUp();
+
+            /*Toggle current answer 
+             .next() selects the nxt sibling element in HTML, so it picks the answer right after the clicked question.*/
+
+            $(this).next(".answer").slideToggle();
+        });
+
+    });
+</script>
+
+</body>
+</html>
