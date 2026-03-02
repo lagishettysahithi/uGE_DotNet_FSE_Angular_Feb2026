@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List - Add to Cart</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .header {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: 300px;
+        }
+
+        .success-msg {
+            color: green;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        🛒 Cart Items: <span id="cartCount">0</span>
+    </div>
+
+    <div id="productList">
+
+        <div class="product">
+            <h3>Laptop</h3>
+            <button class="addBtn">Add to Cart</button>
+            <span class="message"></span>
+        </div>
+
+        <div class="product">
+            <h3>Mobile</h3>
+            <button class="addBtn">Add to Cart</button>
+            <span class="message"></span>
+        </div>
+
+        <div class="product">
+            <h3>Headphones</h3>
+            <button class="addBtn">Add to Cart</button>
+            <span class="message"></span>
+        </div>
+
+        <div class="product">
+            <h3>Smart Watch</h3>
+            <button class="addBtn">Add to Cart</button>
+            <span class="message"></span>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            let count = 0;
+
+            // Event Delegation
+            $("#productList").on("click", ".addBtn", function () {
+
+                count++;
+
+                // Update cart counter using .text()
+                $("#cartCount").text(count);
+
+                // Disable button using .prop()
+                $(this).prop("disabled", true);
+
+                // Change button text using .text()
+                $(this).text("Added");
+
+                // Add attribute using .attr()
+                $(this).attr("title", "Product already added");
+
+                // Show confirmation message
+                $(this).siblings(".message")
+                       .text("✔ Added to cart")
+                       .addClass("success-msg");
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
