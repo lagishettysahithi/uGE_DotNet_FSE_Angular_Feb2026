@@ -415,7 +415,7 @@ INSERT INTO orders3 VALUES
 
 
 
-/* 1️⃣ ARCHIVE OLD REJECTED ORDERS */
+/* 1️ ARCHIVE OLD REJECTED ORDERS */
 INSERT INTO archived_orders
 SELECT *
 FROM orders3
@@ -424,14 +424,14 @@ AND order_date < DATEADD(YEAR,-1,GETDATE());
 
 
 
-/* 2️⃣ DELETE OLD REJECTED ORDERS */
+/* 2️ DELETE OLD REJECTED ORDERS */
 DELETE FROM orders3
 WHERE order_status = 3
 AND order_date < DATEADD(YEAR,-1,GETDATE());
 
 
 
-/* 3️⃣ CUSTOMERS WHOSE ALL ORDERS ARE COMPLETED */
+/* 3️ CUSTOMERS WHOSE ALL ORDERS ARE COMPLETED */
 SELECT c.customer_id,
        c.first_name + ' ' + c.last_name AS full_name
 FROM customers2 c
@@ -445,7 +445,7 @@ WHERE NOT EXISTS
 
 
 
-/* 4️⃣ ORDER PROCESSING DELAY */
+/* 4️ ORDER PROCESSING DELAY */
 SELECT 
 order_id,
 DATEDIFF(DAY, order_date, shipped_date) AS processing_delay_days
@@ -453,7 +453,7 @@ FROM orders3;
 
 
 
-/* 5️⃣ MARK ORDERS AS DELAYED OR ON TIME */
+/* 5️ MARK ORDERS AS DELAYED OR ON TIME */
 SELECT 
 order_id,
 order_date,
@@ -466,3 +466,4 @@ CASE
 END AS delivery_status
 
 FROM orders3;
+
