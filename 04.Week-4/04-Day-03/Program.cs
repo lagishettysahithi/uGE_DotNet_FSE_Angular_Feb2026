@@ -1,47 +1,33 @@
-﻿namespace Employee_Bonus
+﻿namespace Number_Analysis
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string name;
-            double salary;
-            int experience;
-            double bonusPercent;
-            double bonus;
-            double finalSalary;
+            int N;
+            int evenCount = 0;
+            int oddCount = 0;
+            int sum = 0;
 
+            Console.WriteLine("Enter Number:");
+            N=int.Parse(Console.ReadLine()) ;
 
-            Console.WriteLine("Enter Name:");
-            name = Console.ReadLine();
-
-            Console.WriteLine("Enter Salary:");
-            salary = double.Parse(Console.ReadLine());
-
-            Console.WriteLine("Enter Experience :");
-            experience = int.Parse(Console.ReadLine());
-
-            if (experience < 2)
+            for (int i = 1; i <= N; i++)
             {
-                bonusPercent = 0.05;
+                sum =sum+i;
+                if (i % 2 == 0)
+                {
+                    evenCount++;
+                }
+                else
+                {
+                    oddCount++;
+                }
             }
-            else if (experience <= 5)
-            {
-                bonusPercent = 0.10;
-            }
-            else 
-              {
-                bonusPercent = 0.15;
-            }
-
-            bonus = salary > 0? salary * bonusPercent:0;
-            finalSalary = salary + bonus;
-
-            Console.WriteLine($"Employee: {name}");
-            Console.WriteLine($"Bonus: {bonus}");
-            Console.WriteLine($"Final Salary: {finalSalary}");
+            Console.WriteLine($"EvenCount : {evenCount}");
+            Console.WriteLine($"ODD Count :{oddCount}");
+            Console.WriteLine($"sum: {sum}");
 
         }
-
     }
 }
