@@ -1,1 +1,12 @@
 
+
+
+1.  Create ASP.NET Core MVC Application to perform CRUD operations on Products Data.    Create required Model Class, Controller and Action methods. 
+
+2.  Update the above example with the following requirements:
+			---  use data annotations for validations
+			---  Validations:
+						product id -- required 
+						product name -- required,  length should be 5 to 15
+						price --    required 
+						category ---   length should be 5 to 15
