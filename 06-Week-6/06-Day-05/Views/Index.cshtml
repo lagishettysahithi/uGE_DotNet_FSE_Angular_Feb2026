@@ -1,0 +1,53 @@
+﻿@model List<WebApplication1.Models.Product>
+
+<h1 class="display-5">Product List</h1>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Add Product</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td colspan="5" class="text-center text-danger">
+                    No Products Available
+                </td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Price</td>
+                    <td>@item.Category</td>
+                    <td>
+                        <a class="btn btn-info btn-sm"
+                           asp-action="Details"
+                           asp-route-id="@item.ProductId">Details</a>
+
+                        <a class="btn btn-warning btn-sm"
+                           asp-action="Edit"
+                           asp-route-id="@item.ProductId">Edit</a>
+
+                        <a class="btn btn-danger btn-sm"
+                           asp-action="Delete"
+                           asp-route-id="@item.ProductId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

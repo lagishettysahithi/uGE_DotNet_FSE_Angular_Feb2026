@@ -1,0 +1,20 @@
+﻿@model WebApplication1.Models.Product
+
+<h2>Product Details</h2>
+<hr />
+
+@if (Model == null)
+{
+    <div class="alert alert-danger">No Product Found</div>
+}
+else
+{
+    <div class="card p-3">
+        <p><b>Id:</b> @Model.ProductId</p>
+        <p><b>Name:</b> @Model.ProductName</p>
+        <p><b>Price:</b> @Model.Price</p>
+        <p><b>Category:</b> @Model.Category</p>
+    </div>
+}
+
+<a asp-action="Index" class="btn btn-secondary mt-2">Back</a>
