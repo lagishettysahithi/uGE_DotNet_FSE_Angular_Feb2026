@@ -1,0 +1,40 @@
+﻿@using WebApplication1.Models
+@model List<ContactInfo>
+
+<h2>Contact List</h2>
+
+<a class="btn btn-primary" asp-action="Create">Add Contact</a>
+<hr />
+
+<a href="Contact/Search?id=1">Search By Id (1)</a>
+
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Designation</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContactId</td>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@item.CompanyName</td>
+                <td>@item.EmailId</td>
+                <td>@item.MobileNo</td>
+                <td>@item.Designation</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ContactId">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

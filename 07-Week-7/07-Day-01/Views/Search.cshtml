@@ -1,0 +1,21 @@
+﻿@using WebApplication1.Models
+@model List<ContactInfo>
+
+<h2>Search Result</h2>
+
+<table border="1" class="table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Company</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ContactId</td>
+            <td>@item.FirstName</td>
+            <td>@item.CompanyName</td>
+        </tr>
+    }
+</table>
