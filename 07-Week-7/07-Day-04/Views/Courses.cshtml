@@ -1,0 +1,27 @@
+﻿@model List<WebApplication1.Models.Course>
+
+<h2>Courses List</h2>
+
+<table class="table">
+    <tr>
+        <th>Course Id</th>
+        <th>Course Name</th>
+        <th>Students</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CourseId</td>
+            <td>@item.CourseName</td>
+            <td>
+                <ul>
+                    @foreach (var s in item.Students)
+                    {
+                        <li>@s.StudentName</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+</table>
