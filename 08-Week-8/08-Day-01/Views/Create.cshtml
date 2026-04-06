@@ -1,0 +1,34 @@
+﻿@model WebApplication2.Models.ContactInfo
+
+<h2>Contact Form</h2>
+
+<form method="post">
+
+    <input asp-for="ContactId" type="hidden" />
+
+    <input asp-for="FirstName" placeholder="First Name" /><br />
+    <input asp-for="LastName" placeholder="Last Name" /><br />
+    <input asp-for="EmailId" placeholder="Email" /><br />
+    <input asp-for="MobileNo" placeholder="Mobile" /><br />
+    <input asp-for="Designation" placeholder="Designation" /><br />
+
+    <select asp-for="CompanyId">
+        <option value="">Select Company</option>
+        @foreach (var c in ViewBag.Companies)
+        {
+            <option value="@c.CompanyId">@c.CompanyName</option>
+        }
+    </select>
+
+    <select asp-for="DepartmentId">
+        <option value="">Select Department</option>
+        @foreach (var d in ViewBag.Departments)
+        {
+            <option value="@d.DepartmentId">@d.DepartmentName</option>
+        }
+    </select>
+
+    <br />
+    <button type="submit">Save</button>
+
+</form>
