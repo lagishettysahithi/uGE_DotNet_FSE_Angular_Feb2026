@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebApplication1.Models.Course>
+
+<h2>Courses</h2>
+
+@foreach (var c in Model)
+{
+    <h3>@c.CourseName</h3>
+
+    <ul>
+        @if (c.Students != null)
+        {
+            foreach (var s in c.Students)
+            {
+                <li>@s.StudentName</li>
+            }
+        }
+    </ul>
+}
