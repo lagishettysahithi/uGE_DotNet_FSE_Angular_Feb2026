@@ -1,0 +1,26 @@
+﻿@model WebApplication3.Models.ContactInfo
+
+<h2>Create Contact</h2>
+
+<form asp-action="Create" method="post">
+
+    First Name: <input asp-for="FirstName" /><br />
+    Last Name: <input asp-for="LastName" /><br />
+    Email: <input asp-for="EmailId" /><br />
+    Mobile: <input asp-for="MobileNo" /><br />
+    Designation: <input asp-for="Designation" /><br />
+
+    Company:
+    <select asp-for="CompanyId"
+            asp-items="@(new SelectList(ViewBag.Companies, "CompanyId", "CompanyName"))">
+    </select><br />
+
+    Department:
+    <select asp-for="DepartmentId"
+            asp-items="@(new SelectList(ViewBag.Departments, "DepartmentId", "DepartmentName"))">
+    </select><br />
+
+    <button type="submit">Save</button>
+</form>
+
+<a asp-action="Index">Back</a>
